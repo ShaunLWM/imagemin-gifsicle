@@ -5,14 +5,14 @@
 ## Install
 
 ```
-$ npm install imagemin-gifsicle
+$ npm install ShaunLWM/imagemin-gifsicle
 ```
 
 ## Usage
 
 ```js
 const imagemin = require("imagemin");
-const imageminGifsicle = require("imagemin-gifsicle");
+const imageminGifsicle = require("ShaunLWM/imagemin-gifsicle");
 
 (async () => {
 	await imagemin(["images/*.gif"], "build/images", {
