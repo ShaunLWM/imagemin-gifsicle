@@ -1,6 +1,6 @@
 {
 	"name": "imagemin-gifsicle",
-	"version": "7.0.0",
+	"version": "7.0.0.alpha.1",
 	"description": "Imagemin plugin for Gifsicle",
 	"license": "MIT",
 	"repository": "imagemin/imagemin-gifsicle",
@@ -26,12 +26,12 @@
 		"optimize"
 	],
 	"dependencies": {
-		"execa": "^4.0.0",
-		"gifsicle": "^5.0.0",
+		"execa": "^4.0.2",
+		"gifsicle": "^5.1.0",
 		"is-gif": "^3.0.0"
 	},
 	"devDependencies": {
-		"ava": "^3.8.0",
+		"ava": "^3.8.2",
 		"xo": "^0.30.0"
 	}
 }

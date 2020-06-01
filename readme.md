@@ -11,17 +11,15 @@ $ npm install imagemin-gifsicle
 ## Usage
 
 ```js
-const imagemin = require('imagemin');
-const imageminGifsicle = require('imagemin-gifsicle');
+const imagemin = require("imagemin");
+const imageminGifsicle = require("imagemin-gifsicle");
 
 (async () => {
-	await imagemin(['images/*.gif'], 'build/images', {
-		use: [
-			imageminGifsicle()
-		]
+	await imagemin(["images/*.gif"], "build/images", {
+		use: [imageminGifsicle()],
 	});
 
-	console.log('Images optimized');
+	console.log("Images optimized");
 })();
 ```
 
@@ -60,6 +58,20 @@ Select an optimization level between `1` and `3`.
 Type: `number`
 
 Reduce the number of distinct colors in each output GIF to num or less. Num must be between 2 and 256.
+
+##### lossy
+
+Type: `number`\
+Default: `20`
+
+Alter image colors to shrink output file size at the cost of artifacts and noise. Lossiness determines how many artifacts are allowed; higher values can result in smaller file sizes, but cause more artifacts.
+
+##### useCols
+
+Type: `string`\
+Default: null
+
+Select colormap: [`web`, `bw`]
 
 #### buffer
 

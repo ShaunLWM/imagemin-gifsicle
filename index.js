@@ -1,21 +1,23 @@
-'use strict';
-const execa = require('execa');
-const gifsicle = require('gifsicle');
-const isGif = require('is-gif');
+"use strict";
+const execa = require("execa");
+const gifsicle = require("gifsicle");
+const isGif = require("is-gif");
 
-module.exports = (options = {}) => async input => {
+module.exports = (options = {}) => async (input) => {
 	if (!Buffer.isBuffer(input)) {
-		throw new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``);
+		throw new TypeError(
+			`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``
+		);
 	}
 
 	if (!isGif(input)) {
 		return input;
 	}
 
-	const args = ['--no-warnings', '--no-app-extensions'];
+	const args = ["--no-warnings", "--no-app-extensions"];
 
 	if (options.interlaced) {
-		args.push('--interlace');
+		args.push("--interlace");
 	}
 
 	if (options.optimizationLevel) {
@@ -26,9 +28,17 @@ module.exports = (options = {}) => async input => {
 		args.push(`--colors=${options.colors}`);
 	}
 
-	const {stdout} = await execa(gifsicle, args, {
+	if (options.useCols) {
+		args.push(`--use-col=${options.useCols}`);
+	}
+
+	if (options.lossy) {
+		args.push(`--lossy=${options.lossy}`);
+	}
+
+	const { stdout } = await execa(gifsicle, args, {
 		encoding: null,
-		input
+		input,
 	});
 
 	return stdout;
