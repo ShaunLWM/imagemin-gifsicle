@@ -3,14 +3,14 @@ const execa = require("execa");
 const gifsicle = require("gifsicle");
 const isGif = require("is-gif");
 
-module.exports = (options = {}) => async (input) => {
-	options = Object.assign(
+module.exports = (opts = {}) => async (input) => {
+	opts = Object.assign(
 		{
 			resize_method: "lanczos3",
 			optimizationLevel: 2,
 			output_webp: false,
 		},
-		options
+		opts
 	);
 
 	if (!Buffer.isBuffer(input)) {
@@ -25,24 +25,24 @@ module.exports = (options = {}) => async (input) => {
 
 	const args = ["--no-warnings", "--no-app-extensions"];
 
-	if (options.interlaced) {
+	if (opts.interlaced) {
 		args.push("--interlace");
 	}
 
-	if (options.optimizationLevel) {
-		args.push(`--optimize=${options.optimizationLevel}`);
+	if (opts.optimizationLevel) {
+		args.push(`--optimize=${opts.optimizationLevel}`);
 	}
 
-	if (options.colors) {
-		args.push(`--colors=${options.colors}`);
+	if (opts.colors) {
+		args.push(`--colors=${opts.colors}`);
 	}
 
-	if (options.useCols) {
-		args.push(`--use-col=${options.useCols}`);
+	if (opts.useCols) {
+		args.push(`--use-col=${opts.useCols}`);
 	}
 
-	if (options.lossy) {
-		args.push(`--lossy=${options.lossy}`);
+	if (opts.lossy) {
+		args.push(`--lossy=${opts.lossy}`);
 	}
 
 	if (opts.resize_method) {
