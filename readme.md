@@ -73,6 +73,52 @@ Default: null
 
 Select colormap: [`web`, `bw`]
 
+##### resize_method
+
+Type: `string`
+Default: `lanczos3`
+
+Set the method used to resize images. The `sample` method runs very quickly, but when shrinking images, it produces noisy results. The `mix` method is somewhat slower, but produces better-looking results. The default method is currently `mix`.
+
+Gifsicle also supports more complex resamplers, including Catmull-Rom cubic resampling (`catrom`), the Mitchell-Netravali filter (`mitchell`), a 2-lobed Lanczos filter (`lanczos2`), and a 3-lobed Lanczos filter (`lanczos3`). These filters are slower still, but can give sharper, better results.
+
+##### gamma
+
+Type: `number`
+
+Set the gamma correction to gamma, which can be a real number or ‘srgb’.
+
+##### crop
+
+Type: `array`
+
+Crop box in format `[left, top, width, height]`.
+
+##### flip_h
+
+Type: `boolean`
+
+Flips GIF horizontally.
+
+##### flip_v
+
+Type: `boolean`
+
+Flips GIF vertically.
+
+##### rotate
+
+Type: `number`
+
+Rotates GIF image. Valid values are `90`, `180` and `270`. All other values are silently ignored.
+
+##### output_webp
+
+Type: `boolean`<br>
+Default: `false`
+
+Output buffer contains `WebP` image. `gif2webp` binary needs to be present in your `$PATH` for this conversion to work.
+
 #### buffer
 
 Type: `Buffer`
